@@ -82,6 +82,8 @@ static const char *amixerpluscmd[] = {"amixer", "-D", "pulse", "sset", "Master",
 static const char *amixermincmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%-" , NULL };
 static const char *amixertogglecmd[] = {"amixer", "-D", "pulse", "set", "Master", "1+", "toggle", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
