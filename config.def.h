@@ -37,6 +37,12 @@ static const Rule rules[] = {
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "st",      NULL,     NULL,           0,         0,          1,          -1,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         1,          0,           1,        -1 }, /* xev */
+    { "imagej",  NULL,     NULL,           0,         1,          0,          -1,        -1 },
+	{ "st-256color", NULL, NULL,           0,         0,          1,          -1,        -1 }, // st
+    { "matplotlib",  NULL, NULL,           0,         1,          0,          -1,        -1 },   
+    { "Microsoft Teams - Preview", NULL, "Microsoft Teams Notification", 0, 1, 0, -1, -1},
+    { "firefox", "Toolkit", NULL, 0, 1, 0, -1, -1 },
+    { "Lxappearance", NULL, NULL, 0, 1, 0, -1, -1},
 };
 
 /* layout(s) */
@@ -66,13 +72,29 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-l", "15", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *passmenucmd[] = {"passmenu", "-l", "15", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *lockcmd[] = {"slock", NULL};
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *amixerpluscmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%+", NULL };
+static const char *amixermincmd[] = {"amixer", "-D", "pulse", "sset", "Master", "5%-" , NULL };
+static const char *amixertogglecmd[] = {"amixer", "-D", "pulse", "set", "Master", "1+", "toggle", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = passmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_bracketleft, spawn,     {.v = amixermincmd } },
+    { Mod4Mask,                     XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY,                       XK_bracketright, spawn,    {.v = amixerpluscmd } },
+	{ MODKEY|ShiftMask,             XK_bracketright, spawn,    {.v = amixertogglecmd } },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
+	{ MODKEY|ShiftMask,             XK_bracketleft, spawn,     {.v = amixertogglecmd } },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -98,6 +120,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_o,      winview,        {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -107,8 +131,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY,                       XK_o,      winview,        {0} },
 };
 
 /* button definitions */
