@@ -30,8 +30,8 @@ static const char col10[]           = "#ffffff";
 static const char col11[]           = "#ffffff";
 static const char col12[]           = "#ffffff";
 // custom colors
-static const char col_border[] = "#af005f";
-static const unsigned int baralpha = 0xd0;
+static const char col_border[] = "#458588";
+static const unsigned int baralpha = 0xff; // 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -125,7 +125,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = passmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_bracketleft, spawn,     {.v = amixermincmd } },
-    { Mod4Mask,                     XK_l,      spawn,          {.v = lockcmd } },
+    { Mod1Mask|ControlMask,         XK_l,      spawn,          {.v = lockcmd } },
 	{ MODKEY,                       XK_bracketright, spawn,    {.v = amixerpluscmd } },
 	{ MODKEY|ShiftMask,             XK_bracketright, spawn,    {.v = amixertogglecmd } },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
