@@ -102,8 +102,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-l", "15", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenudesktopcmd[] = { "/home/folkert/.local/bin/run_dmenu_desktop", NULL };
 static const char *passmenucmd[] = {"passmenu", "-l", "15", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *lockcmd[] = {"slock", NULL};
 static const char *amixerpluscmd[] = {"/home/folkert/.local/bin/audio_plus.sh" , NULL };
@@ -117,6 +117,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = passmenucmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = dmenudesktopcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_bracketleft, spawn,     {.v = amixermincmd } },
     { Mod4Mask,                     XK_l,      spawn,          {.v = lockcmd } },
