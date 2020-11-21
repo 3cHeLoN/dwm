@@ -101,14 +101,14 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+/* helper for spawning shell commands in the predwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-l", "15", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenudesktopcmd[] = { "/home/folkert/.local/bin/run_dmenu_desktop", NULL };
-static const char *passmenucmd[] = {"passmenu", "-l", "15", "-i", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *passmenucmd[] = {"passmenu", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *lockcmd[] = {"slock", NULL};
 static const char *amixerpluscmd[] = {"/home/folkert/.local/bin/audio_plus.sh" , NULL };
 static const char *amixermincmd[] = {"/home/folkert/.local/bin/audio_min.sh", NULL };
@@ -116,9 +116,21 @@ static const char *amixertogglecmd[] = {"/home/folkert/.local/bin/audio_toggle.s
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *mpd_togglecmd[] = {"mpc", "toggle", NULL};
+static const char *mpd_nextcmd[] = {"mpc", "next", NULL};
+static const char *mpd_prevcmd[] = {"mpc", "prev", NULL};
+static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
+static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
+static const char *newsboatcmd[] = {"st", "-e", "newsboat", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+    { MODKEY,                       XK_n,      spawn,          {.v = newsboatcmd }},
+    { MODKEY,                       XK_u,      spawn,          {.v = dmenuemocmd }},
+    { MODKEY,                       XK_e,      spawn,          {.v = email_cmd }},
+    { MODKEY|ControlMask,           XK_p,      spawn,          {.v = mpd_togglecmd }},
+    { MODKEY|ControlMask,           XK_period, spawn,          {.v = mpd_nextcmd }},
+    { MODKEY|ControlMask,           XK_comma,  spawn,          {.v = mpd_prevcmd }},
 	{ MODKEY,                       XK_u,      spawn,          {.v = dmenudesktopcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = passmenucmd } },
