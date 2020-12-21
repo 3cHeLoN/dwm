@@ -90,8 +90,11 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "HHH",      grid },
+	{ "###",      grid },
 };
+
+/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -101,19 +104,17 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* helper for spawning shell commands in the predwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+
 static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL};
-static const char *dmenudesktopcmd[] = { "/home/folkert/.local/bin/run_dmenu_desktop", NULL };
+static const char *dmenudesktopcmd[] = { "$HOME/.local/bin/run_dmenu_desktop", NULL };
 static const char *passmenucmd[] = {"passmenu", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *lockcmd[] = {"slock", NULL};
-static const char *amixerpluscmd[] = {"/home/folkert/.local/bin/audio_plus.sh" , NULL };
-static const char *amixermincmd[] = {"/home/folkert/.local/bin/audio_min.sh", NULL };
-static const char *amixertogglecmd[] = {"/home/folkert/.local/bin/audio_toggle.sh", NULL };
+static const char *amixerpluscmd[] = {"$HOME/.local/bin/audio_plus.sh" , NULL };
+static const char *amixermincmd[] = {"$HOME/.local/bin/audio_min.sh", NULL };
+static const char *amixertogglecmd[] = {"$HOME/.local/bin/audio_toggle.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
@@ -121,8 +122,9 @@ static const char *mpd_togglecmd[] = {"mpc", "toggle", NULL};
 static const char *mpd_nextcmd[] = {"mpc", "next", NULL};
 static const char *mpd_prevcmd[] = {"mpc", "prev", NULL};
 static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
-static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
+static const char *dmenuemocmd[] = {"$HOME/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"st", "-e", "newsboat", NULL};
+static const char *browsercmd[] = {"brave", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -143,7 +145,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_bracketleft, spawn,     {.v = amixertogglecmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	//{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
