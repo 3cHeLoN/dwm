@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 0;       /* gaps between windows */
+static const unsigned int gappx     = 12;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=13",
+static const char *fonts[]          = { "Iosevka:size=13",
                                         "JoyPixels:size=12:antialias=true:autohint=true"
 										};
 
@@ -109,12 +109,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 
 static const char *dmenucmd[] = { "dmenu_run", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL};
-static const char *dmenudesktopcmd[] = { "$HOME/.local/bin/run_dmenu_desktop", NULL };
+static const char *dmenudesktopcmd[] = { "/home/folkert/.local/bin/run_dmenu_desktop", NULL };
 static const char *passmenucmd[] = {"passmenu", "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *lockcmd[] = {"slock", NULL};
-static const char *amixerpluscmd[] = {"$HOME/.local/bin/audio_plus.sh" , NULL };
-static const char *amixermincmd[] = {"$HOME/.local/bin/audio_min.sh", NULL };
-static const char *amixertogglecmd[] = {"$HOME/.local/bin/audio_toggle.sh", NULL };
+static const char *amixerpluscmd[] = {"/home/folkert/.local/bin/audio_plus.sh" , NULL };
+static const char *amixermincmd[] = {"/home/folkert/.local/bin/audio_min.sh", NULL };
+static const char *amixertogglecmd[] = {"/home/folkert/.local/bin/audio_toggle.sh", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
@@ -122,7 +122,7 @@ static const char *mpd_togglecmd[] = {"mpc", "toggle", NULL};
 static const char *mpd_nextcmd[] = {"mpc", "next", NULL};
 static const char *mpd_prevcmd[] = {"mpc", "prev", NULL};
 static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
-static const char *dmenuemocmd[] = {"$HOME/.local/bin/dmenuunicode", NULL};
+static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"st", "-e", "newsboat", NULL};
 static const char *browsercmd[] = {"brave", NULL };
 
