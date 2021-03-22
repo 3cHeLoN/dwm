@@ -1465,6 +1465,9 @@ void
 resizeclient(Client *c, int x, int y, int w, int h)
 {
 	XWindowChanges wc;
+    Monitor *m;
+
+    m = c->mon;
 
 	c->oldx = c->x; c->x = wc.x = x;
 	c->oldy = c->y; c->y = wc.y = y;
@@ -1479,6 +1482,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 		c->h = wc.height += c->bw * 2;
 		wc.border_width = 0;
 	}
+
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
