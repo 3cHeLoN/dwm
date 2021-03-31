@@ -125,12 +125,15 @@ static const char *mpd_prevcmd[] = {"mpc", "prev", NULL};
 static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
 static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"setsid", "st", "-e", "newsboat", NULL};
+static const char *youtubecmd[] = {"setsid", "st", "-e", "newsboat", "--config-file=/home/folkert/.config/newsboat/youtube-config", "--url-file=/home/folkert/.config/newsboat/youtube-urls", "--cache-file=/home/folkert/.config/newsboat/youtube-cache.db", NULL };
 static const char *browsercmd[] = {"brave", NULL };
 static const char *recordcallcmd[] = { "/home/folkert/.local/bin/toggle_call_record", "/home/folkert/Audio", NULL };
 static const char *filebrowsecmd[] = { "st", "-e", "vifmrun", NULL };
+static const char *mymenucmd[] = { "run_xmenu", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+    { MODKEY,                       XK_y,      spawn,          {.v = youtubecmd }},
     { MODKEY,                       XK_n,      spawn,          {.v = newsboatcmd }},
     { MODKEY,                       XK_u,      spawn,          {.v = dmenuemocmd }},
     { MODKEY,                       XK_e,      spawn,          {.v = email_cmd }},
@@ -205,5 +208,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    { ClkRootWin,           0,              Button3,        spawn,          {.v = mymenucmd }},
 };
 
