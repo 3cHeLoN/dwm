@@ -11,17 +11,21 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "mono:size=12",
-                                        "JoyPixels:size=12:antialias=true:autohint=true"
+static const char *fonts[]          = { "mono:size=13",
+                                        "JoyPixels:size=13:antialias=true:autohint=true"
 										};
 
-static const char dmenufont[]       = "monospace:size=12";
+static const char dmenufont[]       = "monospace:size=13";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#4C566A"; //"#005577";
-static const char col_border[] = "#458588";
+// Nord
+//static const char col_cyan[]        = "#4C566A"; //"#005577";
+//static const char col_border[] = "#458588";
+// Papercolor
+static const char col_cyan[]        = "#005f87";
+static const char col_border[]      = "#005f87";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
