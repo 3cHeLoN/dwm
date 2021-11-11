@@ -11,11 +11,11 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "mono:size=13",
-                                        "JoyPixels:size=13:antialias=true:autohint=true"
+static const char *fonts[]          = { "Meslo LG M:size=12",
+                                        "JoyPixels:size=12:antialias=true:autohint=true"
 										};
 
-static const char dmenufont[]       = "monospace:size=13";
+static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -24,8 +24,8 @@ static const char col_gray4[]       = "#eeeeee";
 //static const char col_cyan[]        = "#4C566A"; //"#005577";
 //static const char col_border[] = "#458588";
 // Papercolor
-static const char col_cyan[]        = "#005f87";
-static const char col_border[]      = "#005f87";
+static const char col_cyan[]        = "#156f72"; //"#009688"; //"#04acc2"; //"#005f87";
+static const char col_border[]      = "#04acc2"; //"#005f87";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
@@ -105,7 +105,7 @@ static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
 static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"setsid", "st", "-e", "newsboat", NULL};
 static const char *youtubecmd[] = {"setsid", "st", "-e", "newsboat", "--config-file=/home/folkert/.config/newsboat/youtube-config", "--url-file=/home/folkert/.config/newsboat/youtube-urls", "--cache-file=/home/folkert/.config/newsboat/youtube-cache.db", NULL };
-static const char *browsercmd[] = {"brave", "--use-gl=desktop", "--enable-features=VaapiVideoDecoder", NULL };
+static const char *browsercmd[] = {"brave", "--use-gl=desktop", "--enable-features=VaapiVideoDecoder", "--disable-features=UseOzonePlatform", NULL };
 static const char *recordcallcmd[] = { "/home/folkert/.local/bin/toggle_call_record", "/home/folkert/Audio", NULL };
 static const char *filebrowsecmd[] = { "st", "-e", "vifmrun", NULL };
 static const char *mymenucmd[] = { "run_xmenu", NULL };
