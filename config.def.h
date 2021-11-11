@@ -105,7 +105,7 @@ static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
 static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"setsid", "st", "-e", "newsboat", NULL};
 static const char *youtubecmd[] = {"setsid", "st", "-e", "newsboat", "--config-file=/home/folkert/.config/newsboat/youtube-config", "--url-file=/home/folkert/.config/newsboat/youtube-urls", "--cache-file=/home/folkert/.config/newsboat/youtube-cache.db", NULL };
-static const char *browsercmd[] = {"brave", "--use-gl=desktop", "--enable-features=VaapiVideoDecoder", "--disable-features=UseOzonePlatform", NULL };
+static const char *browsercmd[] = {"chromium", NULL };
 static const char *recordcallcmd[] = { "/home/folkert/.local/bin/toggle_call_record", "/home/folkert/Audio", NULL };
 static const char *filebrowsecmd[] = { "st", "-e", "vifmrun", NULL };
 static const char *mymenucmd[] = { "run_xmenu", NULL };
