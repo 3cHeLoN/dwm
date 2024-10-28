@@ -11,7 +11,9 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Roboto Mono:size=12:antialias=true:autohint=true", //"Meslo LG M:size=12",
+static const char *fonts[]          = { "FiraCode Nerd Font Mono:size=11:antialias=true:autohint=true",
+//static const char *fonts[]          = { "Roboto Mono:size=12:antialias=true:autohint=true",
+					//kl"Meslo LG M:size=12",
                                         "JoyPixels:size=12:antialias=true:autohint=true"
 										};
 
@@ -106,7 +108,7 @@ static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
 static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"setsid", "st", "-e", "newsboat", NULL};
 static const char *youtubecmd[] = {"setsid", "st", "-e", "newsboat", "--config-file=/home/folkert/.config/newsboat/youtube-config", "--url-file=/home/folkert/.config/newsboat/youtube-urls", "--cache-file=/home/folkert/.config/newsboat/youtube-cache.db", NULL };
-static const char *browsercmd[] = {"chromium", NULL };
+static const char *browsercmd[] = {"firefox", NULL };
 static const char *recordcallcmd[] = { "/home/folkert/.local/bin/toggle_call_record", "/home/folkert/Audio", NULL };
 static const char *filebrowsecmd[] = { "st", "-e", "vifmrun", NULL };
 static const char *mymenucmd[] = { "run_xmenu", NULL };
@@ -157,10 +159,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = -1 } },
     //{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	//{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	//{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
