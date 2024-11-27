@@ -47,6 +47,7 @@ static const Rule rules[] = {
 	{ "Firefox", NULL,     NULL,              1 << 8,    0,          0,        -1,        -1 },
 	{ "st",      NULL,     NULL,              0,         0,          1,        -1,        -1 },
 	{ NULL,      NULL,     "Event Tester",    0,         1,          0,         0,        -1 }, /* xev */
+	{ "LibreWolf", "Toolkit", "Picture-in-Picture", 0,   1,          0,         0,        -1 },
     { NULL, "sun-awt-X11-XFramePeer",   NULL, 0,         1,          0,         0,        -1 },
     { NULL, "sun-awt-XDialogPeer",   NULL,    0,         1,          0,         0,        -1 },
 	{ "st-256color", NULL, NULL,              0,         0,          1,        -1,        -1 }, // st
