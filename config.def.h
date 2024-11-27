@@ -108,7 +108,7 @@ static const char *email_cmd[] = {"st", "-e", "neomutt", NULL};
 static const char *dmenuemocmd[] = {"/home/folkert/.local/bin/dmenuunicode", NULL};
 static const char *newsboatcmd[] = {"setsid", "st", "-e", "newsboat", NULL};
 static const char *youtubecmd[] = {"setsid", "st", "-e", "newsboat", "--config-file=/home/folkert/.config/newsboat/youtube-config", "--url-file=/home/folkert/.config/newsboat/youtube-urls", "--cache-file=/home/folkert/.config/newsboat/youtube-cache.db", NULL };
-static const char *browsercmd[] = {"brave-browser", NULL };
+static const char *browsercmd[] = {"librewolf", NULL };
 static const char *recordcallcmd[] = { "/home/folkert/.local/bin/toggle_call_record", "/home/folkert/Audio", NULL };
 static const char *filebrowsecmd[] = { "st", "-e", "vifmrun", NULL };
 static const char *mymenucmd[] = { "run_xmenu", NULL };
@@ -117,7 +117,7 @@ static const char *nautiluscmd[] = { "nautilus", NULL };
 static const char *wallpapercmd[] = { "switch_wallpaper.sh", NULL };
 static const char *appmenu_cmd[] = { "/home/folkert/.local/bin/xmenu.sh", NULL };
 
-static Key keys[] = {
+static const Key keys[] = {
 	/* modifier                     key        function        argument */
     { MODKEY,                       XK_w,      spawn,          {.v = wallpapercmd }},
     { MODKEY,                       XK_s,      spawn,          {.v = exposecmd }},
@@ -180,23 +180,24 @@ static Key keys[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
-static Button buttons[] = {
-    /* click                event mask      button          function        argument */
-    { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-    { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-    { ClkWinTitle,          0,              Button2,        zoom,           {0} },
-    { ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
-    { ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
-    //{ ClkStatusText,        0,              Button3,        appmenu_cmd,    {.i = 3} },
-    { ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
-    { ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
-    { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-    { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-    { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-    { ClkTagBar,            0,              Button1,        view,           {0} },
-    { ClkTagBar,            0,              Button3,        toggleview,     {0} },
-    { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-    { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-    { ClkRootWin,           0,              Button3,        spawn,          {.v = mymenucmd }},
+static const Button buttons[] = {
+	/* click                event mask      button          function        argument */
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+	//{ ClkStatusText,        0,              Button3,        appmenu_cmd,    {.i = 3} },
+	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
+	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkRootWin,           0,              Button3,        spawn,          {.v = mymenucmd }},
 };
 
